@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ことばの進捗帳 | note記事制作管理</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-icon" aria-hidden="true">✎</span>ことばの進捗帳</a><span class="local-label">このブラウザに保存</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">NOTE ARTICLE WORKSPACE</p><h1>書くことに、集中しよう。</h1><p class="subtitle">記事の予定と進み具合を、ひとつの場所に。</p></div><button class="primary" id="add-button">＋ 新しい記事</button></section>
+    <section class="stats" aria-label="記事の集計"><div><span>登録した記事</span><strong id="total-count">0<small>件</small></strong></div><div><span>制作中</span><strong id="active-count">0<small>件</small></strong></div><div><span>納期を過ぎた記事</span><strong class="warning" id="overdue-count">0<small>件</small></strong></div><div><span>納品済み</span><strong id="done-count">0<small>件</small></strong></div></section>
+    <section class="workspace" aria-labelledby="list-heading">
+      <div class="list-header"><h2 id="list-heading">記事一覧 <span id="result-count">0件</span></h2><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="タイトル・クライアントを検索" aria-label="タイトル・クライアントを検索"></label></div>
+      <div class="filters" role="group" aria-label="ステータスで絞り込み"><button class="filter selected" data-filter="all" aria-pressed="true">すべて</button><button class="filter" data-filter="構成作成" aria-pressed="false">構成作成</button><button class="filter" data-filter="執筆中" aria-pressed="false">執筆中</button><button class="filter" data-filter="確認待ち" aria-pressed="false">確認待ち</button><button class="filter" data-filter="納品済み" aria-pressed="false">納品済み</button></div>
+      <div class="table-head" aria-hidden="true"><span>記事タイトル / クライアント</span><span>納期</span><span>制作ステータス</span><span>操作</span></div>
+      <div id="article-list"></div>
+      <div class="empty" id="empty-state"><div class="empty-icon" aria-hidden="true">✎</div><h3>最初の記事を登録しましょう</h3><p>クライアントと納期を登録して、制作を少しずつ前へ。</p><button class="secondary" id="empty-add">＋ 記事を登録</button></div>
+    </section>
+    <p class="storage-note">データはこの端末のブラウザ内に保存されます。別の端末とは同期されません。<br>ブラウザのデータを消すと記事も消えるため、大切な情報は別途控えてください。</p>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+  </main>
+  <dialog id="article-dialog" aria-labelledby="dialog-title"><form id="article-form"><div class="dialog-header"><div><p class="eyebrow">ARTICLE DETAILS</p><h2 id="dialog-title">新しい記事</h2></div><button type="button" class="close" id="close-dialog" aria-label="閉じる">×</button></div><p class="form-help">すべての項目を入力してください。</p><label>クライアント名<input id="client" name="client" required maxlength="100" placeholder="例：株式会社ことば"></label><label>記事タイトル<input id="title" name="title" required maxlength="200" placeholder="例：新しい働き方をはじめるためのヒント"></label><div class="form-grid"><label>納期<input id="deadline" name="deadline" type="date" required min="1900-01-01" max="9999-12-31"></label><label>制作ステータス<select id="status" name="status"><option>構成作成</option><option>執筆中</option><option>確認待ち</option><option>納品済み</option></select></label></div><p id="form-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="secondary" id="cancel-dialog">キャンセル</button><button type="submit" class="primary">保存する</button></div></form></dialog>
+</body>
+</html>
